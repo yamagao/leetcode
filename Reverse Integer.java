@@ -3,11 +3,16 @@ public class Solution {
         if(x == 0){
             return 0;
         }
-        int result = x % 10;
-        x /= 10;
-        while(x != 0){
-            result = result * 10 + x % 10;
-            x /= 10;
+        int temp = x;
+        int result = temp % 10;
+        temp /= 10;
+        while(temp != 0){
+            result = result * 10 + temp % 10;
+            temp /= 10;
+        }
+        int overflow = x^result;
+        if(overflow < 0){
+            return -1;
         }
         return result;
     }
